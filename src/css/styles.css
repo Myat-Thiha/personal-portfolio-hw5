@@ -43,7 +43,33 @@ article{
     margin: 1rem 2rem;
     padding: 1rem;
     border-radius: var(--radius);
+    /* Baseline 2024: @starting-style for entry animations */
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 220ms ease, transform 220ms ease;
+    transition-behavior: allow-discrete;
 }
+
+/* Baseline 2024: @starting-style - defines initial state when element enters DOM */
+@starting-style {
+    article {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+/*
+ * BASELINE 2024 FEATURE DESCRIPTION: @starting-style and transition-behavior
+ * 
+ * This implementation uses @starting-style and transition-behavior: allow-discrete, 
+ * two CSS features that became part of Baseline 2024. The @starting-style at-rule 
+ * allows you to define the initial state of an element when it first enters the DOM, 
+ * enabling smooth entry animations without requiring JavaScript. When combined with 
+ * transition-behavior: allow-discrete, it allows transitions on discrete properties 
+ * like display and content-visibility. In this portfolio, articles fade in and slide 
+ * up smoothly when the page loads, and navigation links fade in gracefully, creating 
+ * a polished user experience that was previously difficult to achieve with pure CSS.
+ */
 
 h1,h2,h3{ 
     text-align:center; 
@@ -72,7 +98,18 @@ header nav a{
     text-decoration:none; 
     padding:0.35rem 0.6rem; 
     border-radius:6px; 
-    font-weight:600; 
+    font-weight:600;
+    /* Baseline 2024: Entry animation setup */
+    opacity: 1;
+    transition: background-color 180ms ease, transform 140ms ease, color 150ms ease, opacity 0.4s ease;
+    transition-behavior: allow-discrete;
+}
+
+/* Baseline 2024: @starting-style for navigation links */
+@starting-style {
+    header nav a {
+        opacity: 0;
+    }
 }
 
 header nav a:hover, header nav a:focus{ 
@@ -103,11 +140,9 @@ code, pre{
  }
 
 /* Subtle transitions to improve perceived polish */
-header nav a{
-    transition: background-color 180ms ease, transform 140ms ease, color 150ms ease;
-}
+/* Note: article and header nav a already have transitions defined with @starting-style */
 
-article, form fieldset, .contact-card{
+form fieldset, .contact-card{
     transition: box-shadow 220ms ease, transform 220ms ease;
 }
 
