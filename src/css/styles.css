@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root{
+    --black: #0a0908;    /* page background */
+    --gunmetal: #22333b; /* panels / surface */
+    --almond: #eae0d5;   /* primary text (light) */
+    --khaki: #c6ac8f;    /* accent */
+
+    --bg: var(--black);
+    --surface: var(--gunmetal);
+    --accent: var(--khaki);
+    --text: var(--almond);
+    --surface-text: var(--almond);
+    /* dynamic viewport variable (dvh/dvw) */
+    --vh: 100dvh;
+    --radius: 8px;
+}
+
+/* Base layout + typography */
+body{
+    margin:0;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing:antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+header{
+    margin: 1rem 0;
+    padding: 0.6rem 1rem;
+}
+
+article{
+    background: var(--surface);
+    color: var(--surface-text);
+    margin: 1rem 2rem;
+    padding: 1rem;
+    border-radius: var(--radius);
+}
+
+h1,h2,h3{ 
+    text-align:center; 
+    color: var(--text); 
+    font-family: 'Lora', Georgia, 'Times New Roman', Times, serif; 
+}
+
+picture,picture img{ 
+    display:block; 
+    margin:0.5rem auto; 
+    max-width:100%; height:auto; 
+    border-radius:6px; 
+}
+
+header nav ul{ 
+    display:flex; gap:6rem; 
+    align-items:center; 
+    justify-content:center; 
+    margin:0; 
+    padding:0; 
+    list-style:none; 
+}
+
+header nav a{ 
+    color: var(--accent, #c6ac8f); 
+    text-decoration:none; 
+    padding:0.35rem 0.6rem; 
+    border-radius:6px; 
+    font-weight:600; 
+}
+
+header nav a:hover, header nav a:focus{ 
+    background: rgba(234,224,213,0.08); 
+    outline:none; 
+}
+
+a{ 
+    color: var(--accent, #c6ac8f); 
+}
+
+footer{ 
+    padding:1rem; 
+    text-align:center; 
+    color: rgba(234,224,213,0.75);
+    /* Demonstrate Baseline 2024 feature: color-mix() - subtle accent background */
+    background: color-mix(in srgb, var(--accent, #c6ac8f) 8%, var(--bg, #0a0908) 92%);
+}
+
+@media (max-width:640px){ 
+    header nav ul{ 
+        gap:0.6rem; flex-wrap:wrap; 
+    } 
+}
+
+code, pre{ 
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Courier New', monospace;
+ }
+
+/* Subtle transitions to improve perceived polish */
+header nav a{
+    transition: background-color 180ms ease, transform 140ms ease, color 150ms ease;
+}
+
+article, form fieldset, .contact-card{
+    transition: box-shadow 220ms ease, transform 220ms ease;
+}
+
+.contact-card:hover, form fieldset:hover, article:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(96, 95, 95, 0.55);
+}
+
+picture img{
+    transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+picture img:hover{
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    header nav a,
+    article,
+    picture img {
+        transition: none !important;
+        transform: none !important;
+    }
+}
+
+
+form fieldset{
+    background: var(--surface);
+    color: var(--surface-text);
+    border: none;
+    padding: 1rem;
+    border-radius: var(--radius);
+    box-shadow: 0 8px 20px rgba(2,6,8,0.6);
+    margin: 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+form legend{ 
+    color: var(--text); 
+    font-weight:700; 
+}
+
+label{ color: var(--surface-text); }
+
+input, textarea{
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.04);
+    color: var(--text);
+}
+
+button[type="submit"]{
+    background: var(--accent);
+    color: var(--bg);
+    box-shadow: 0 8px 24px rgba(198,172,143,0.08);
+}
+
+.contact-card{
+    background: var(--surface);
+    color: var(--surface-text);
+    border-radius: var(--radius);
+    padding: 1rem;
+    border: none;
+    box-shadow: 0 8px 20px rgba(2,6,8,0.6);
+    margin: 1rem 1rem;
+    h3 {
+        margin-top: 0;
+    }
+    .lead {
+        font-size: 0.95rem;
+    }
+}
+
+/* Demonstrate Baseline 2024 feature: color-mix() for wider gamut blending (EC) */
+/* This class serves as an additional demonstration; color-mix() is also used in footer */
+.demo-color-mix {
+  background: color-mix(in srgb, var(--accent, #c6ac8f) 12%, transparent);
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+}
+
+/* Demonstrate new :has() selector (EC) - style articles that contain a picture */
+article:has(picture) {
+  /* Adds subtle indicator when article contains images; preserves current look */
+  position: relative;
+}
+
+/* Explicit responsive breakpoints for phone / tablet / desktop */
+@media (max-width: 479px) {
+  /* Phone */
+  header nav ul {
+    gap: 0.6rem;
+  }
+  article {
+    margin: 1rem 0.5rem;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 1023px) {
+  /* Tablet */
+  header nav ul {
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Desktop */
+  header nav ul {
+    gap: 6rem;
+  }
+}
+
+
+
