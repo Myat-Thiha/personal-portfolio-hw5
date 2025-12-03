@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Manage Projects — CRUD Operations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="src/css/styles.css">
+  <script src="src/js/theme-toggle.js" defer></script>
+  <script src="src/js/project-card.js" defer></script>
+  <script src="src/js/crud-operations.js" defer></script>
+</head>
+<body>
+  <noscript>This site requires JavaScript for CRUD operations.</noscript>
+  
+  <header view-transition-name="header">
+    <h1>Manage Projects</h1>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="src/about.html">About</a></li>
+        <li><a href="src/projects.html">Projects</a></li>
+        <li><a href="src/experience.html">Experience</a></li>
+        <li><a href="src/contact.html">Contact</a></li>
+        <li><a href="crud.html" aria-current="page">Manage Projects</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main view-transition-name="main">
+    <!-- CRUD Form Section -->
+    <section class="crud-form-section">
+      <h2 id="form-title">Create New Project</h2>
+      
+      <form id="crud-form" class="crud-form">
+        <input type="hidden" id="project-index" value="">
+        
+        <fieldset>
+          <legend>Project Details</legend>
+          
+          <p class="form-group">
+            <label for="project-title">Project Title *</label>
+            <input type="text" id="project-title" name="title" required 
+                   placeholder="e.g., Machine Learning Project">
+          </p>
+
+          <p class="form-group">
+            <label for="project-image">Image Path *</label>
+            <input type="text" id="project-image" name="image" required 
+                   placeholder="e.g., ../assets/project.png">
+            <small>Relative path to project image</small>
+          </p>
+
+          <p class="form-group">
+            <label for="project-image-alt">Image Alt Text *</label>
+            <input type="text" id="project-image-alt" name="imageAlt" required 
+                   placeholder="Descriptive alt text for accessibility">
+          </p>
+
+          <p class="form-group">
+            <label for="project-description">Description *</label>
+            <textarea id="project-description" name="description" required rows="4"
+                      placeholder="Detailed project description..."></textarea>
+          </p>
+
+          <p class="form-row">
+            <span class="form-group">
+              <label for="project-date">Date</label>
+              <input type="text" id="project-date" name="date" 
+                     placeholder="e.g., 2024 or 2023-2024">
+            </span>
+
+            <span class="form-group">
+              <label for="project-tags">Tags</label>
+              <input type="text" id="project-tags" name="tags" 
+                     placeholder="e.g., Python, AI, Machine Learning">
+              <small>Comma-separated tags</small>
+            </span>
+          </p>
+
+          <p class="form-row">
+            <span class="form-group">
+              <label for="project-link">Project Link</label>
+              <input type="url" id="project-link" name="link" 
+                     placeholder="https://github.com/username/repo">
+            </span>
+
+            <span class="form-group">
+              <label for="project-link-text">Link Text</label>
+              <input type="text" id="project-link-text" name="linkText" 
+                     placeholder="e.g., View on GitHub">
+            </span>
+          </p>
+        </fieldset>
+
+        <p class="form-actions">
+          <button type="submit" id="submit-btn" class="btn btn-primary">Create Project</button>
+          <button type="button" id="cancel-btn" class="btn btn-secondary" style="display: none;">Cancel</button>
+        </p>
+
+        <output id="form-status" name="status"></output>
+      </form>
+    </section>
+
+    <!-- Projects List Section -->
+    <section class="crud-list-section">
+      <header class="section-header">
+        <h2>All Projects (localStorage)</h2>
+        <button id="refresh-btn" class="btn btn-secondary">Refresh List</button>
+      </header>
+      
+      <article id="projects-list" class="projects-grid">id">
+        <!-- Project cards will be displayed here -->
+      </article>
+
+      <output id="list-status" class="list-status"></output>
+    </section>
+  </main>
+
+  <footer view-transition-name="footer">
+    <small>&copy; 2025 Myat Thiha — CRUD Operations</small>
+  </footer>
+</body>
+</html>
