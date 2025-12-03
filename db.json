@@ -1,0 +1,54 @@
+{
+  "projects": [
+    {
+      "title": "Rise Myanmar — Earthquake Relief Platform",
+      "image": "../assets/Myanmar_Earthquake_Relief.png",
+      "imageAlt": "Screenshot of Rise Myanmar web platform showing interactive relief map with donation tracking and multilingual support",
+      "description": "Open-source platform to coordinate earthquake relief in Myanmar. Features include real-time needs tracking, interactive maps, news updates, and trusted donation campaigns with full English and Burmese language support.",
+      "date": "2023",
+      "tags": "Web Development, Open Source, React, Humanitarian",
+      "link": "https://github.com/RiseMyanmar/RiseMyanmarWeb",
+      "linkText": "View on GitHub"
+    },
+    {
+      "title": "Graphing Calculator (SFML)",
+      "image": "../assets/graphing_calculator.gif",
+      "imageAlt": "Interactive graphing calculator showing plotted mathematical functions with real-time rendering",
+      "description": "Feature-rich graphing calculator built using SFML tools in C++ for interactive mathematical function plotting. Supports multiple function types, zoom controls, and real-time graph rendering.",
+      "date": "2023",
+      "tags": "C++, SFML, Graphics, Mathematics",
+      "link": "https://github.com/Myat-Thiha/Graphing-Calculator-using-SFML-tools",
+      "linkText": "View on GitHub"
+    },
+    {
+      "title": "Optimizing K-means Clustering using Transformer",
+      "image": "../assets/Research_Poster.jpg",
+      "imageAlt": "Research poster showing Transformer-based K-means optimization with performance charts and methodology diagrams",
+      "description": "Research project (UCSD ERSP) using Transformer models (TabPFN and looped attention mechanisms) to predict clustering centroids and reduce iteration counts compared to classical K-means variants.",
+      "date": "2024-2025",
+      "tags": "Machine Learning, Research, Python, Transformers",
+      "link": "",
+      "linkText": "View Research"
+    },
+    {
+      "title": "AI-Powered Code Review Assistant",
+      "image": "../assets/sentiment_analysis.png",
+      "imageAlt": "Screenshot of AI code review tool analyzing pull requests",
+      "description": "Intelligent code review assistant leveraging large language models to provide automated code quality analysis, security vulnerability detection, and best practice recommendations.",
+      "date": "2024",
+      "tags": "AI, DevOps, Python, LLM",
+      "link": "https://github.com",
+      "linkText": "View on GitHub"
+    },
+    {
+      "title": "Real-Time Chat Application",
+      "image": "../assets/data_structure.gif",
+      "imageAlt": "Real-time chat interface with multiple rooms and user presence indicators",
+      "description": "Scalable real-time chat application built with WebSockets, Redis, and Node.js. Features include multi-room support, message persistence, typing indicators, and end-to-end encryption.",
+      "date": "2024",
+      "tags": "Node.js, WebSocket, Redis, Real-Time",
+      "link": "https://github.com",
+      "linkText": "View on GitHub"
+    }
+  ]
+}
