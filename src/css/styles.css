@@ -492,3 +492,417 @@ button {
         animation: none !important;
     }
 }
+
+/* ==========================
+     Project Card Grid Layout
+     - Uses CSS Grid for responsive card layout
+     - CSS Variables for project-card customization
+     ========================== */
+
+/* CSS Variables for project-card styling */
+:root {
+    --card-bg: var(--surface);
+    --card-border: 1px solid rgba(234, 224, 213, 0.15);
+    --card-radius: 12px;
+    --card-padding: 1.5rem;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --card-shadow-hover: 0 12px 24px rgba(0, 0, 0, 0.4);
+    --card-gap: 1rem;
+    
+    --card-title-size: 1.5rem;
+    --card-title-weight: 700;
+    --card-title-color: var(--text);
+    
+    --card-text-color: var(--surface-text);
+    --card-text-size: 1rem;
+    
+    --card-meta-size: 0.875rem;
+    --card-meta-color: rgba(234, 224, 213, 0.7);
+    
+    --card-image-radius: 8px;
+    --card-image-bg: rgba(234, 224, 213, 0.05);
+    
+    --tag-bg: rgba(198, 172, 143, 0.2);
+    --tag-color: var(--accent);
+    --tag-radius: 16px;
+    --tag-size: 0.875rem;
+    
+    --link-color: var(--accent);
+    --link-hover-color: var(--text);
+    --link-weight: 600;
+    --link-size: 1rem;
+    
+    --transition-speed: 0.3s;
+}
+
+/* Light theme adjustments for project cards */
+:root[data-theme="light"] {
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --card-shadow-hover: 0 12px 24px rgba(0, 0, 0, 0.15);
+    --card-border: 1px solid rgba(34, 51, 59, 0.15);
+    --card-meta-color: rgba(10, 9, 8, 0.6);
+    --tag-bg: rgba(34, 51, 59, 0.1);
+    --card-image-bg: rgba(10, 9, 8, 0.03);
+}
+
+/* Projects Grid Container */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 4rem;
+    padding: 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Responsive adjustments for grid */
+@media (max-width: 640px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 2rem;
+        margin: 1rem;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+}
+
+/* ==========================
+     Data Load Buttons
+     ========================== */
+
+.data-load-btn {
+    background: var(--accent);
+    color: var(--bg);
+    border: 2px solid var(--accent);
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    box-shadow: 0 4px 12px rgba(198, 172, 143, 0.3);
+    font-family: inherit;
+}
+
+.data-load-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(198, 172, 143, 0.4);
+}
+
+.data-load-btn:active {
+    transform: translateY(0);
+}
+
+.data-load-btn:focus {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.data-load-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#load-status {
+    min-height: 1.5rem;
+    font-style: italic;
+}
+
+#load-status.success {
+    color: #22c55e;
+}
+
+#load-status.error {
+    color: #ef4444;
+}
+
+#load-status.loading {
+    color: var(--accent);
+}
+
+/* ==========================
+     CRUD Operations Styling
+     ========================== */
+
+.crud-form-section {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.crud-form {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.crud-form fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+
+.crud-form legend {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(234, 224, 213, 0.05);
+    border: 2px solid rgba(234, 224, 213, 0.15);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(234, 224, 213, 0.08);
+}
+
+.form-group small {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--card-meta-color);
+    margin-top: 0.25rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 640px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.btn {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+    box-shadow: 0 4px 12px rgba(198, 172, 143, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(198, 172, 143, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 2px solid var(--accent);
+}
+
+.btn-secondary:hover {
+    background: rgba(198, 172, 143, 0.1);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Form status messages */
+#form-status {
+    display: block;
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    min-height: 1rem;
+}
+
+#form-status.success {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #22c55e;
+}
+
+#form-status.error {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #ef4444;
+}
+
+#form-status:empty {
+    display: none;
+}
+
+/* CRUD List Section */
+.crud-list-section {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.section-header h2 {
+    margin: 0;
+}
+
+.list-status {
+    text-align: center;
+    font-size: 1rem;
+    margin: 2rem 0;
+    padding: 1rem;
+    border-radius: 6px;
+}
+
+.list-status.success {
+    color: #22c55e;
+}
+
+.list-status.info {
+    color: var(--accent);
+    font-style: italic;
+}
+
+.list-status:empty {
+    display: none;
+}
+
+/* Card wrapper with action buttons */
+.card-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-actions {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: var(--surface);
+    border-radius: 0 0 var(--card-radius) var(--card-radius);
+    margin-top: -0.5rem;
+}
+
+.btn-edit,
+.btn-delete {
+    flex: 1;
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-family: inherit;
+}
+
+.btn-edit {
+    background: #3b82f6;
+    color: white;
+}
+
+.btn-edit:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+}
+
+.btn-delete {
+    background: #ef4444;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #dc2626;
+    transform: translateY(-2px);
+}
+
+.btn-edit:active,
+.btn-delete:active {
+    transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .crud-form {
+        padding: 1.5rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .crud-list-section {
+        padding: 1rem;
+    }
+}

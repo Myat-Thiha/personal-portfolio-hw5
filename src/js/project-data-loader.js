@@ -3,8 +3,6 @@
  * Handles loading project data from localStorage and remote sources
  */
 
-// Remote data URL - using My JSON Server (GitHub-based, no API key needed)
-// Format: https://my-json-server.typicode.com/{username}/{repo}/{endpoint}
 const REMOTE_DATA_URL = 'https://my-json-server.typicode.com/Myat-Thiha/personal-portfolio-hw5/projects';
 
 // Initialize localStorage with sample data on first load
