@@ -363,6 +363,46 @@ output:empty{
     }
 }
 
+/* Contact list styling */
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.contact-item {
+    margin-bottom: 1.25rem;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(198, 172, 143, 0.08);
+    border-radius: 8px;
+    transition: background 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
+}
+
+.contact-link:hover {
+    background: rgba(198, 172, 143, 0.15);
+    transform: translateX(6px);
+}
+
+.contact-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: inline-block;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+    color: var(--accent);
+}
+
+.contact-link:hover .contact-icon {
+    transform: scale(1.2);
+}
+
 /* Demonstrate Baseline 2024 feature: color-mix() for wider gamut blending (EC) */
 /* This class serves as an additional demonstration; color-mix() is also used in footer */
 .demo-color-mix {
