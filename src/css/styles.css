@@ -43,6 +43,7 @@ body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    line-height: 1.6;
 }
 
 main {
@@ -52,14 +53,16 @@ main {
 header{
     margin: 1rem 0;
     padding: 0.6rem 1rem;
+    border-bottom: 1px solid rgba(198, 172, 143, 0.1);
 }
 
 article{
     background: var(--surface);
     color: var(--surface-text);
     margin: 1rem 2rem;
-    padding: 1rem;
+    padding: 1.5rem;
     border-radius: var(--radius);
+    border-left: 4px solid var(--accent);
     /* Baseline 2024: @starting-style for entry animations */
     opacity: 1;
     transform: translateY(0);
@@ -94,11 +97,33 @@ h1,h2,h3{
     font-family: 'Lora', Georgia, 'Times New Roman', Times, serif; 
 }
 
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin: 1.5rem 0 1rem;
+    letter-spacing: -0.01em;
+}
+
+h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0.875rem 0 0.5rem;
+}
+
 picture,picture img{ 
     display:block; 
-    margin:0.5rem auto; 
-    max-width:100%; height:auto; 
-    border-radius:6px; 
+    margin: 1.5rem auto; 
+    max-width: 100%; 
+    height: auto; 
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 header nav ul{ 
@@ -113,13 +138,31 @@ header nav ul{
 header nav a{ 
     color: var(--accent, #c6ac8f); 
     text-decoration:none; 
-    padding:0.35rem 0.6rem; 
+    padding:0.5rem 0.875rem; 
     border-radius:6px; 
     font-weight:600;
+    font-size: 0.95rem;
+    position: relative;
     /* Baseline 2024: Entry animation setup */
     opacity: 1;
     transition: background-color 180ms ease, transform 140ms ease, color 150ms ease, opacity 0.4s ease;
     transition-behavior: allow-discrete;
+}
+
+header nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+header nav a:hover::after,
+header nav a:focus::after {
+    width: 100%;
 }
 
 /* Baseline 2024: @starting-style for navigation links */
@@ -130,7 +173,7 @@ header nav a{
 }
 
 header nav a:hover, header nav a:focus{ 
-    background: rgba(234,224,213,0.08); 
+    background: rgba(198, 172, 143, 0.12); 
     outline:none; 
 }
 
@@ -139,9 +182,11 @@ a{
 }
 
 footer{ 
-    padding:1rem; 
+    padding: 2rem 1rem; 
     text-align:center; 
     color: rgba(234,224,213,0.75);
+    border-top: 1px solid rgba(198, 172, 143, 0.1);
+    margin-top: 3rem;
     /* Demonstrate Baseline 2024 feature: color-mix() - subtle accent background */
     background: color-mix(in srgb, var(--accent, #c6ac8f) 8%, var(--bg, #0a0908) 92%);
 }
@@ -190,21 +235,21 @@ picture img:hover{
 form fieldset{
     background: var(--surface);
     color: var(--surface-text);
-    border: none;
-    padding: 1rem;
+    border: 1px solid rgba(198, 172, 143, 0.15);
+    padding: 1.5rem;
     border-radius: var(--radius);
-    box-shadow: 0 8px 20px rgba(2,6,8,0.6);
-    margin: 1rem 1rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    margin: 1.5rem 1rem;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
 }
 
 form legend{ 
     color: var(--text); 
     font-weight: 700;
     font-size: 1.25rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
 }
 
 /* Labels stack on top of inputs */
@@ -212,7 +257,8 @@ form label{
     color: var(--text); 
     font-weight: 600;
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.625rem;
+    font-size: 0.95rem;
 }
 
 /* Input and textarea styling */
@@ -221,14 +267,14 @@ form input[type="email"],
 form input[type="tel"],
 form textarea{
     width: 100%;
-    padding: 0.75rem;
-    background: rgba(234, 224, 213, 0.05);
-    border: 2px solid rgba(234, 224, 213, 0.15);
+    padding: 0.875rem;
+    background: rgba(234, 224, 213, 0.03);
+    border: 2px solid rgba(234, 224, 213, 0.2);
     border-radius: 6px;
     color: var(--text);
     font-family: inherit;
     font-size: 1rem;
-    transition: border-color 0.2s ease, background 0.2s ease;
+    transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
     box-sizing: border-box;
 }
 
@@ -238,7 +284,8 @@ form input[type="tel"]:focus,
 form textarea:focus{
     outline: none;
     border-color: var(--accent);
-    background: rgba(234, 224, 213, 0.08);
+    background: rgba(234, 224, 213, 0.06);
+    box-shadow: 0 0 0 3px rgba(198, 172, 143, 0.1);
 }
 
 form textarea{
@@ -301,15 +348,18 @@ output:empty{
     background: var(--surface);
     color: var(--surface-text);
     border-radius: var(--radius);
-    padding: 1rem;
-    border: none;
-    box-shadow: 0 8px 20px rgba(2,6,8,0.6);
+    padding: 1.5rem;
+    border: 1px solid rgba(198, 172, 143, 0.15);
+    border-left: 4px solid var(--accent);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
     margin: 1rem 1rem;
     h3 {
         margin-top: 0;
+        font-size: 1.1rem;
     }
     .lead {
         font-size: 0.95rem;
+        line-height: 1.7;
     }
 }
 
