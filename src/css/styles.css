@@ -403,6 +403,116 @@ output:empty{
     transform: scale(1.2);
 }
 
+/* ==========================
+     Experience Timeline
+     ========================== */
+
+.experience-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.experience-timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.experience-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    opacity: 0.3;
+}
+
+.experience-card {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid rgba(198, 172, 143, 0.15);
+    border-radius: var(--radius);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.experience-card::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 2rem;
+    width: 12px;
+    height: 12px;
+    background: var(--accent);
+    border: 3px solid var(--bg);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px var(--accent);
+}
+
+.experience-card:hover {
+    transform: translateX(8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border-left-color: var(--accent);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.card-header h3 {
+    margin: 0;
+    flex: 1;
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+.card-header time {
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.tech-stack {
+    margin: 0.75rem 0;
+    padding: 0.75rem 1rem;
+    background: rgba(198, 172, 143, 0.06);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .experience-timeline::before {
+        left: 10px;
+    }
+
+    .experience-card::before {
+        left: 2px;
+    }
+
+    .experience-card:hover {
+        transform: translateX(4px);
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card-header time {
+        margin-top: -0.5rem;
+    }
+}
+
 /* Demonstrate Baseline 2024 feature: color-mix() for wider gamut blending (EC) */
 /* This class serves as an additional demonstration; color-mix() is also used in footer */
 .demo-color-mix {
